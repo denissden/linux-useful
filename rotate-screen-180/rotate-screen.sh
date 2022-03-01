@@ -2,13 +2,13 @@
 # useful for showing your screen to someone sitting in front of you by opening the lid 180 degrees
 
 # run with dot: . ./script
-touchpad_id=14
+touchpad_id=$(xinput list | sed -n 's/^.*[Tt]ouchpad.*id=\([0-9]*\).*/\1/p')
 prop="Coordinate Transformation Matrix"
 
 
 
 #if cache directory doesn't exist, create it
-cache="~/.cache/rotate-screen-180" 
+cache="/tmp/rotate-screen-180" 
 if [ ! -f $cache ]
 then
 	mkdir -p $cache
